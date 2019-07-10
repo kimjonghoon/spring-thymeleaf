@@ -10,15 +10,15 @@
 
 	<properties>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
-		<maven.compiler.source>9</maven.compiler.source>
-		<maven.compiler.target>9</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>5.1.5.RELEASE</version>
+			<version>5.1.8.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring5 -->
 		<dependency>
@@ -37,11 +37,11 @@
 
 	<build>
 		<plugins>
-			<!-- Embedded Jetty HTTP Server for testing war application -->
+			<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-maven-plugin -->
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.4.8.v20171121</version>
+				<version>9.4.19.v20190610</version>
 			</plugin>
 		</plugins>
 	</build>
