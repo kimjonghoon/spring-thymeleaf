@@ -28,12 +28,14 @@ $(document).ready(function () {
 <!-- next and prev -->
 <article>
 <div id="next-prev">
-	<ul>
-		<th:block th:switch="${#locale.country}">
-			<li th:case="'KR'">다음 : <a href="/java/Features">자바의 특징</a></li>
-			<li th:case="'*'">Next : <a href="/java/Features">Features</a></li>
-		</th:block>
-	</ul>
+	<th:block th:switch="${#locale.country}">
+		<ul th:case="'KR'">
+			<li>다음 : <a href="/java/Features">자바의 특징</a></li>
+		</ul>
+		<ul th:case="*">
+			<li>Next : <a href="/java/Features">Features</a></li>
+		</ul>
+	</th:block>
 </div>
 </article>
 <!-- sub menu -->
