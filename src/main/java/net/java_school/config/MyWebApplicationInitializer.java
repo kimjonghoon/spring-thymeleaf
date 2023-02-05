@@ -1,8 +1,8 @@
-package net.java_school.spring.config;
+package net.java_school.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class MvcWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class MyWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -11,7 +11,7 @@ public class MvcWebApplicationInitializer extends AbstractAnnotationConfigDispat
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] { MvcWebConfig.class };
+		return new Class[] { AppConfig.class };
 	}
 
 	@Override
