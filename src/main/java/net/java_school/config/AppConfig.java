@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -25,11 +26,20 @@ public class AppConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 	}
-	
+	/*
+	   i18n
+	   */
+	@Bean
+	public ResourceBundleMessageSource messageSource() {
+		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+		messageSource.setBasename("messages");
+		messageSource.setDefaultEncoding("UTF-8");//If the encoding of the Java property file is UTF-8
+		return messageSource;
+	}	
 	/*
 	 * STEP 1 - Create SpringResourceTemplateResolver
-	*/
-	
+	 */
+
 	@Bean
 	public SpringResourceTemplateResolver templateResolver() {
 		SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
@@ -43,7 +53,7 @@ public class AppConfig implements WebMvcConfigurer {
 
 	/*
 	 * STEP 2 - Create SpringTemplateEngine
-	*/
+	 */
 	@Bean
 	public SpringTemplateEngine templateEngine() {
 		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -52,14 +62,14 @@ public class AppConfig implements WebMvcConfigurer {
 		return templateEngine;
 	}
 
-	  /*
-	   * STEP 3 - Create ThymeleafViewResolver
-	  */
-	  @Bean
-	  public ThymeleafViewResolver viewResolver() {
-	    ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-	    viewResolver.setTemplateEngine(templateEngine());
-	    viewResolver.setCharacterEncoding("UTF-8");
-	    return viewResolver;
-	  }
+	/*
+	 * STEP 3 - Create ThymeleafViewResolver
+	 */
+	@Bean
+	public ThymeleafViewResolver viewResolver() {
+		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+		viewResolver.setTemplateEngine(templateEngine());
+		viewResolver.setCharacterEncoding("UTF-8");
+		return viewResolver;
+	}
 }
