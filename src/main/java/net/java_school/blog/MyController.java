@@ -11,7 +11,7 @@ public class MyController {
 
 	@GetMapping("/")
 	public String index(Model model) {
-		model.addAttribute("message", "안녕 스프링 MVC 5!");
+		model.addAttribute("message", "안녕 스프링 MVC!");
 		return "index";
 	}
 	
@@ -21,37 +21,37 @@ public class MyController {
 	}
 
 	@GetMapping(value = "/java/{article}")
-	public String getJavaArticles(@PathVariable String article) {
+	public String getJavaArticles(@PathVariable(name="article") String article) {
 		return "java/" + article;
 	}
 
 	@GetMapping(value = "/jdbc/{article}")
-	public String getJdbcArticles(@PathVariable String article) {
+	public String getJdbcArticles(@PathVariable(name="article") String article) {
 		return "jdbc/" + article;
 	}
 
 	@GetMapping(value = "/jsp/{article}")
-	public String getJspArticles(@PathVariable String article) {
+	public String getJspArticles(@PathVariable(name="article") String article) {
 		return "jsp/" + article;
 	}
 
 	@GetMapping(value = "/css-layout/{article}")
-	public String getCssLayoutArticles(@PathVariable String article) {
+	public String getCssLayoutArticles(@PathVariable(name="article") String article) {
 		return "css-layout/" + article;
 	}
 
 	@GetMapping(value = "/jsp-pjt/{article}")
-	public String getJspProjectArticles(@PathVariable String article) {
+	public String getJspProjectArticles(@PathVariable(name="article") String article) {
 		return "jsp-pjt/" + article;
 	}
 
 	@GetMapping(value = "/spring/{article}")
-	public String getSpringArticles(@PathVariable String article) {
+	public String getSpringArticles(@PathVariable(name="article") String article) {
 		return "spring/" + article;
 	}
 
 	@GetMapping(value = "/google-app-engine/{article}")
-	public String getGoogleAppEngineArticles(@PathVariable String article) {
+	public String getGoogleAppEngineArticles(@PathVariable(name="article") String article) {
 		return "google-app-engine/" + article;
 	}
 
@@ -61,8 +61,7 @@ public class MyController {
 	}
 
 	@GetMapping(value = "/blog/{year}/{article}")
-	public String getBlogs(@PathVariable String year, @PathVariable String article) {
+	public String getBlogs(@PathVariable(name="year") String year, @PathVariable(name="article") String article) {
 		return "blog/" + year + "/" + article;
 	}
-
 }
